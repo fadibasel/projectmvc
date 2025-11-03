@@ -1,0 +1,46 @@
+﻿@model Product
+<form method="post" action="/Admin/Products/Store" enctype="multipart/form-data">
+    <div class="form-group">
+        <label for="ProductName">Name</label>
+        <input type="text" name="name" value="@Model.Name" class="form-control" id="ProductName" placeholder="Enter Product name">
+
+        <span class="text-danger" asp-validation-for="Name"></span>
+    </div>
+
+    <div class="form-group">
+        <label for="ProductName">Description</label>
+        <textarea type="text" name="Description"  class="form-control" id="ProductDescription" placeholder="Enter Product Description">@Model.Description</textarea>
+
+        <span class="text-danger" asp-validation-for="Description"></span>
+    </div>
+
+    <div class="form-group">
+        <label for="ProductPrice">Price</label>
+        <input type="text" name="Price" value="@Model.Price" class="form-control" id="ProductPrice" placeholder="Enter Product Price">
+
+        <span class="text-danger" asp-validation-for="Price"></span>
+    </div>
+
+    <div class="form-group">
+        <label for="ProductQuantity">Quantity</label>
+        <input type="text" name="Quantity" value="@Model.Quantity" class="form-control" id="ProductQuantity" placeholder="Enter Product Quantity">
+
+        <span class="text-danger" asp-validation-for="Quantity"></span>
+    </div>
+
+    <div class="form-group">
+        <label for="ProductFile">Image</label>
+        <input type="file" name="file"  class="form-control" id="ProductQuantity" >
+
+        <span class="text-danger" asp-validation-for="ImageUrl"></span>
+    </div>
+    <select class="form-control mt-4" name="CategoryId">
+        @foreach (var item in ViewBag.Categories)
+        {
+        <option value="@item.Id">@item.Name</option>
+        }
+       
+   </select>
+
+    <button type="submit" class="btn btn-block btnbtn-outline-success btn-sm mt-2">Create</button>
+</form>
